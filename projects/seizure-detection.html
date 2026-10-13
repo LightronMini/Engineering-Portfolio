@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<meta name="description"
+      content="Engineering portfolio project exploring EEG-based seizure detection and alert hardware using Python, machine learning and Raspberry Pi.">
+
+<title>Seizure Detection & Alert System | Engineering Portfolio</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+</head>
+
+<body>
+
+```
+<!-- Navigation -->
+<header>
+    <nav>
+        <a href="../index.html" class="logo">
+            ENGINEERING PORTFOLIO
+        </a>
+
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#projects">Projects</a>
+            <a href="../index.html#skills">Skills</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <!-- Project introduction -->
+    <section class="project-hero">
+
+        <a href="../index.html#projects" class="back-link">
+            ← Back to Projects
+        </a>
+
+        <p class="project-label">
+            Embedded Systems · Machine Learning · Healthcare Technology
+        </p>
+
+        <h1>EEG-Based Seizure Detection & Alert System</h1>
+
+        <p class="project-intro">
+            A proof-of-concept engineering project exploring how EEG
+            classification software can communicate with a Raspberry Pi
+            to trigger an external alert system.
+        </p>
+
+        <div class="project-tags">
+            <span>Python</span>
+            <span>Machine Learning</span>
+            <span>Raspberry Pi 5</span>
+            <span>TCP Communication</span>
+            <span>Hardware Integration</span>
+        </div>
+
+        <a href="#overview" class="button">
+            Explore Project ↓
+        </a>
+
+        <img
+            src="../images/EEG hand band.jpg"
+            alt="Overview of the seizure detection prototype"
+            class="project-image">
+        
+
+    </section>
+
+    <div class="project-content">
+
+        <!-- Overview -->
+        <section class="project-section" ID="overview">
+            <h2>01. Project Overview</h2>
+
+            <p>
+                This project investigates a proof of concept for detecting potential seizure events 
+                from EEG data and communicating an alert to external hardware.
+            </p>
+
+            <p>
+                When seizure activity is identified, the detection software sends a “SEIZURE” message to the 
+                Raspberry Pi over TCP. The Pi activates a buzzer and provides a three-minute acknowledgement period. 
+                If no acknowledgement is received, it continues the alarm and is designed to send an emergency email, 
+                share GPS coordinates, and contact emergency services.
+            </p>
+
+            <div class="project-callout">
+                <strong>Project objective</strong>
+                <p>
+                    The objective of this project was to investigate the feasibility of a wearable EEG headband 
+                    for the early detection of temporal epileptic seizures. The system was designed to monitor 
+                    electrical brain activity near the temporal region, use a machine-learning model trained on 
+                    epilepsy EEG data to identify seizure-related patterns, and trigger an automated alert process 
+                    when a potential seizure is detected. By integrating wearable electrodes, EEG analysis software, 
+                    and a Raspberry Pi-based alarm and notification system, the project aimed to improve patient safety 
+                    and monitoring while establishing a proof of concept for future real-time clinical application.
+                </p>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="project-section">
+            <h2>02. Problem & Objectives</h2>
+
+            <h3>Issue:</h3>
+            <p>
+                The issue faced by individuals with epilepsy is the unpredictability of seizures, which can occur 
+                without warning, leading to potential injuries, loss of awareness, and heightened risk of Sudden 
+                Unexpected Death in Epilepsy (SUDEP), especially when alone. Many are not aware when a seizure takes 
+                place, particularly during sleep, making self-reporting unreliable. Current wearable systems detect 
+                seizures through indirect signals like movement and heart rate, but they may yield false alarms and 
+                react only after a seizure starts. While EEG is the gold standard for monitoring brain activity, 
+                its high cost and complexity limit its use to hospitals. This situation highlights the necessity for a 
+                portable device capable of continuously monitoring EEG, identifying seizure patterns, and notifying 
+                both the individual and caregivers.
+            </p>
+
+            <h3>Objectives:</h3>
+            <ul>
+                <li>Explore EEG-based seizure classification.</li>
+                <li>Process classification results using Python.</li>
+                <li>Transmit alert messages over a TCP connection.</li>
+                <li>Receive messages using a Raspberry Pi 5.</li>
+                <li>Trigger a buzzer through a GPIO output.</li>
+                <li>Investigate possible caregiver notification features.</li>
+            </ul>
+        </section>
+
+        <!-- Architecture -->
+        <section class="project-section">
+            <h2>03. System Architecture</h2>
+
+            <p>
+                The prototype separates the classification workflow
+                from the physical alert hardware. This allows the
+                communication and alert functions to be tested
+                independently.
+            </p>
+
+            <div class="system-flow">
+
+                <div class="flow-card">
+                    <h3>01. EEG Processing</h3>
+                    <p>
+                        EEG data and the Python classification
+                        workflow are handled on a Windows laptop.
+                    </p>
+                </div>
+
+                <div class="flow-card">
+                    <h3>02. TCP Communication</h3>
+                    <p>
+                        The laptop sends an alert message to the
+                        Raspberry Pi over a network connection.
+                    </p>
+                </div>
+
+                <div class="flow-card">
+                    <h3>03. Hardware Alert</h3>
+                    <p>
+                        The Raspberry Pi receives the message and
+                        controls a buzzer through a GPIO output.
+                    </p>
+                </div>
+
+            </div>
+
+            <p>
+                <strong>Hardware:</strong>
+                BioRadio EEG system, Windows laptop, Raspberry Pi 5
+                and buzzer.
+            </p>
+
+            <p>
+                <strong>Software:</strong>
+                Python, Random Forest classification workflow and
+                TCP socket communication.
+            </p>
+
+            <!-- Add a system diagram if available -->
+            <!--
+            <img
+                src="../images/system-diagram.png"
+                alt="System architecture diagram"
+                class="project-image">
+            -->
+
+        </section>
+
+        <!-- My contribution -->
+        <section class="project-section">
+            <h2>04. My Contribution</h2>
+
+            <p>
+                My work focused on developing and integrating
+                components of the software-to-hardware alert
+                workflow.
+            </p>
+
+            <ul>
+                <li>
+                    Worked with EEG data and the Python-based
+                    classification workflow.
+                </li>
+                <li>
+                    Implemented TCP communication between the
+                    laptop and Raspberry Pi.
+                </li>
+                <li>
+                    Worked on the Raspberry Pi alert logic and
+                    buzzer control.
+                </li>
+                <li>
+                    Investigated system integration limitations
+                    and potential future improvements.
+                </li>
+            </ul>
+
+            <p>
+                The final version of this section should reflect
+                your individual responsibilities and distinguish
+                your contributions from those of other team members.
+            </p>
+        </section>
+
+        <!-- Challenges -->
+        <section class="project-section">
+            <h2>05. Engineering Challenges</h2>
+
+            <h3>EEG data integration</h3>
+
+            <p>
+                The BioRadio data workflow presented an integration
+                challenge because the manufacturer's Windows
+                application was used for EEG acquisition, while
+                the Raspberry Pi could not directly access the
+                required real-time data through the available
+                interface.
+            </p>
+
+            <h3>Software-to-hardware communication</h3>
+
+            <p>
+                The classification workflow and physical alert
+                hardware operated on separate devices. TCP
+                communication provided a way to transmit an alert
+                message from the laptop to the Raspberry Pi.
+            </p>
+
+            <h3>Alert behaviour</h3>
+
+            <p>
+                The alert logic was developed to demonstrate how
+                an event could trigger a buzzer and how a physical
+                button could be incorporated into the prototype.
+                The implemented timing and button behaviour should
+                be documented alongside the actual test results.
+            </p>
+
+        </section>
+
+        <!-- Results -->
+        <section class="project-section">
+            <h2>06. Results & Testing</h2>
+
+            <ul>
+                <li>TCP message transmission and reception.</li>
+                <li>Raspberry Pi response to an alert message.</li>
+                <li>Buzzer activation and stopping behaviour.</li>
+                <li>Physical button interaction worked</li>
+            </ul>
+
+        </section>
+
+        <!-- Future work -->
+        <section class="project-section">
+            <h2>07. Future Improvements</h2>
+
+            <ul>
+                <li>
+                    Investigate a supported real-time EEG data interface.
+                </li>
+                <li>
+                    Evaluate classification performance on appropriately labelled EEG data.
+                </li>
+                <li>
+                    Improve communication reliability and fault handling.
+                </li>
+                <li>
+                    Explore caregiver notification functionality.
+                </li>
+                <li>
+                    Conduct more extensive testing under controlled conditions.
+                </li>
+            </ul>
+
+            <p>
+                Any future system intended for medical use would
+                require appropriate clinical validation, risk
+                management and regulatory assessment.
+            </p>
+        </section>
+
+        <!-- Skills -->
+        <section class="project-section">
+            <h2>08. Skills Demonstrated</h2>
+
+            <div class="project-tags">
+                <span>Python Programming</span>
+                <span>Machine Learning</span>
+                <span>TCP Sockets</span>
+                <span>Raspberry Pi</span>
+                <span>GPIO Control</span>
+                <span>System Integration</span>
+                <span>Engineering Testing</span>
+            </div>
+        </section>
+
+        <!-- Links -->
+        <section class="project-section">
+            <h2>Explore More</h2>
+
+            <p>
+                Interested in my other engineering projects?
+                Return to the main portfolio to explore more.
+            </p>
+
+            <div class="project-links">
+                <a href="../index.html#projects" class="button">
+                    View Other Projects
+                </a>
+
+                <a href="../index.html#contact">
+                    Contact Me →
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+</main>
+
+<footer>
+    <p>Engineering Portfolio · 2026</p>
+</footer>
+```
+
+</body>
+</html>
